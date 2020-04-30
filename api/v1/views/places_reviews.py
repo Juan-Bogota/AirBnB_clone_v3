@@ -55,6 +55,8 @@ def jsonify_review_4(place_id):
             return make_response(jsonify({'error': 'Not a JSON'}), 400)
         if 'user_id' not in json_post:
             return make_response(jsonify({'error': 'Missing user_id'}), 400)
+        if 'text' not in json_post:
+            return make_response(jsonify({'error': 'Missing text'}), 400)
         json_post['place_id'] = place_id
         new = Review(**json_post)
         new.save()
